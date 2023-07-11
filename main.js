@@ -21,9 +21,12 @@ function calculadoraComprasEnDolares(){
     const iva = 0.21
     const bienesPersonales = 0.25
 
+    let cantidadCompras = parseInt(prompt("¿Cuántas compras querés realizar?"))
 
+    for (let i = 1; i <= cantidadCompras; i++){
     let tipoDeCompra = prompt("¿Cuál es el tipo de compra? (streaming/otras)");
     let montoDeLaCompra = parseFloat(prompt("ingrea el monto en dolares"));
+
     const totalEnPesosAlOficial = montoDeLaCompra * cotizacionOficial
 
 
@@ -35,6 +38,7 @@ function calculadoraComprasEnDolares(){
         const totalEnPesosMasImpStreaming = totalEnPesosAlOficial + (totalEnPesosAlOficial * impPaisStreaming) + (totalEnPesosAlOficial * impPresuntasGcias) + (totalEnPesosAlOficial * iva);
 
         console.log("Total final en pesos con impuestos incluidos $" + totalEnPesosMasImpStreaming.toFixed(2) );
+        console.log("------------------------------------------------------------")
 
     }else if(tipoDeCompra === "otras" && montoDeLaCompra < 300) {
         //comprar menos a 300 no incluye bienes personales
@@ -45,6 +49,7 @@ function calculadoraComprasEnDolares(){
         const totalEnPesosMasImp = totalEnPesosAlOficial + (totalEnPesosAlOficial * impPais) + (totalEnPesosAlOficial * impPresuntasGcias);
 
         console.log("Total final en pesos con impuestos incluidos $" + totalEnPesosMasImp.toFixed(2) );
+        console.log("------------------------------------------------------------")
 
     }else if (tipoDeCompra === "otras" && montoDeLaCompra >= 300){
         console.log("No seleccionaste streaming y la cantidad es mayor que $300");
@@ -54,11 +59,13 @@ function calculadoraComprasEnDolares(){
         const totalEnPesosMasBsPs = totalEnPesosAlOficial + (totalEnPesosAlOficial * impPais) + (totalEnPesosAlOficial * impPresuntasGcias) + (totalEnPesosAlOficial * bienesPersonales);
 
         console.log("Total final en pesos con impuestos incluidos + Bienes Personales $" + totalEnPesosMasBsPs.toFixed(2));
+        console.log("------------------------------------------------------------")
     }else {
         console.log("Seleccionaste una opción distinta a 'streaming' o 'otras'. Por favor ingresa una opción correcta")
+        console.log("------------------------------------------------------------") 
         
     }
-
 }
+}   
 
 calculadoraComprasEnDolares()
